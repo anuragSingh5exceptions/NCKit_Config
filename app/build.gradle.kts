@@ -43,7 +43,7 @@ dependencies {
 }
 
 group = "com.example.nckitconfig"
-version = "1.0.0"
+version = "1.0.3"
 
 publishing {
     publications {

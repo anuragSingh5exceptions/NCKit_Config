@@ -7,20 +7,37 @@ Android library that exposes a single public API:
 It uses `com.fiveexceptions.nckit:nckit` internally to load the model and denoise audio from
 audio/video input files into a WAV output file.
 
-## Publish
+## GitHub Packages Publishing
 
-Set credentials in `gradle.properties` or environment variables:
+This project is configured to publish `com.example.nckitconfig:nckitconfig` to GitHub Packages.
 
-- `gpr.user` / `GPR_USER`
-- `gpr.key` / `GPR_KEY`
+### 1) Set required credentials
 
-Then publish:
+Add these to `~/.gradle/gradle.properties` (recommended):
+
+- `gpr.user` (GitHub username)
+- `gpr.key` (GitHub PAT)
+
+Example:
+
+```properties
+gpr.user=YOUR_GITHUB_USERNAME
+gpr.key=YOUR_GITHUB_PAT
+```
+
+### 2) Publish
 
 ```bash
 ./gradlew :app:publishReleasePublicationToGitHubPackagesRepository
 ```
 
-For local verification:
+If a version already exists (HTTP 409 conflict), publish with a new version:
+
+```bash
+./gradlew :app:publishReleasePublicationToGitHubPackagesRepository "-PlibVersion=1.0.2"
+```
+
+### 3) Local verification
 
 ```bash
 ./gradlew :app:publishReleasePublicationToMavenLocal
