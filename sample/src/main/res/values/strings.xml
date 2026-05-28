@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">NCKit Sample</string>
+    <string name="title">NoiceClear Sample</string>
+    <string name="pick_file">Pick Audio/Video File</string>
+    <string name="run_noice_clear">Run NoiceClear</string>
+    <string name="play_original">Play Original</string>
+    <string name="play_denoised">Play Denoised</string>
+    <string name="stop_playback">Stop Playback</string>
+    <string name="selected_file">Selected file: %1$s</string>
+    <string name="status_idle">Status: Idle</string>
+    <string name="status_processing">Status: Processing…</string>
+    <string name="status_done">Status: Done\nOutput: %1$s</string>
+    <string name="status_error">Status: Error\n%1$s</string>
+    <string name="compare_waiting">Comparison: run NoiceClear first.</string>
+    <string name="compare_result">Comparison\nOriginal: %1$s | %2$s | %3$s\nDenoised: %4$s | %5$s | %6$s</string>
+</resources>
