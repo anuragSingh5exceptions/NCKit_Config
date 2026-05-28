@@ -43,7 +43,7 @@ dependencies {
 }
 
 group = "com.example.nckitconfig"
-version = "1.0.3"
+version = (findProperty("libVersion") as String?) ?: "1.0.3"
 
 publishing {
     publications {
@@ -59,7 +59,7 @@ publishing {
             pom {
                 name.set("NCKitConfig")
                 description.set("Android wrapper library exposing NoiceClear API based on NCKit.")
-                url.set("https://github.com/5Exceptions-Mobile-Team/NCKit_Android")
+                url.set("https://github.com/anuragSingh5exceptions/NCKit_Config")
                 licenses {
                     license {
                         name.set("The Apache License, Version 2.0")
@@ -73,7 +73,9 @@ publishing {
                     }
                 }
                 scm {
-                    url.set("https://github.com/5Exceptions-Mobile-Team/NCKit_Android")
+                    connection.set("scm:git:git://github.com/anuragSingh5exceptions/NCKit_Config.git")
+                    developerConnection.set("scm:git:ssh://github.com:anuragSingh5exceptions/NCKit_Config.git")
+                    url.set("https://github.com/anuragSingh5exceptions/NCKit_Config")
                 }
             }
         }
@@ -83,11 +85,21 @@ publishing {
         mavenLocal()
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/5Exceptions-Mobile-Team/NCKit_Android")
+            url = uri("https://maven.pkg.github.com/anuragSingh5exceptions/NCKit_Config")
             credentials {
                 username = (findProperty("gpr.user") as String?) ?: System.getenv("GPR_USER")
                 password = (findProperty("gpr.key") as String?) ?: System.getenv("GPR_KEY")
             }
+        }
+    }
+}
+
+tasks.withType<PublishToMavenRepository>().configureEach {
+    doFirst {
+        if (repository.name == "GitHubPackages" && project.version.toString() == "1.0.0") {
+            throw GradleException(
+                "Version 1.0.0 is already published. Use -PlibVersion=<new-version>, for example -PlibVersion=1.0.4"
+            )
         }
     }
 }

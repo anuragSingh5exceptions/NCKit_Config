@@ -9,7 +9,9 @@ audio/video input files into a WAV output file.
 
 ## GitHub Packages Publishing
 
-This project is configured to publish `com.example.nckitconfig:nckitconfig` to GitHub Packages.
+This project is configured to publish `com.example.nckitconfig:nckitconfig` to GitHub Packages in:
+
+- `anuragSingh5exceptions/NCKit_Config`
 
 ### 1) Set required credentials
 
@@ -28,13 +30,13 @@ gpr.key=YOUR_GITHUB_PAT
 ### 2) Publish
 
 ```bash
-./gradlew :app:publishReleasePublicationToGitHubPackagesRepository
+./gradlew :app:publishReleasePublicationToGitHubPackagesRepository "-PlibVersion=1.0.4"
 ```
 
 If a version already exists (HTTP 409 conflict), publish with a new version:
 
 ```bash
-./gradlew :app:publishReleasePublicationToGitHubPackagesRepository "-PlibVersion=1.0.2"
+./gradlew :app:publishReleasePublicationToGitHubPackagesRepository "-PlibVersion=1.0.5"
 ```
 
 ### 3) Local verification

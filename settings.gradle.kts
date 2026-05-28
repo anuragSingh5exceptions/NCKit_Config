@@ -23,9 +23,13 @@ dependencyResolutionManagement {
             url = uri(
                 "https://maven.pkg.github.com/5Exceptions-Mobile-Team/NCKit_Android"
             )
-            credentials {
-                username = providers.gradleProperty("gpr.user").get()
-                password = providers.gradleProperty("gpr.key").get()
+            val gprUser = providers.gradleProperty("gpr.user").orNull
+            val gprKey = providers.gradleProperty("gpr.key").orNull
+            if (!gprUser.isNullOrBlank() && !gprKey.isNullOrBlank()) {
+                credentials {
+                    username = gprUser
+                    password = gprKey
+                }
             }
         }
     }
